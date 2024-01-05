@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+<% if (sent) { %>
+    <h1>Successfully Sent Your Message!</h1>
+<% } else { %>
+    <h1>Something Went Wrong</h1>
+    <p><%= error %></p>
+<% } %>
+<div class="loader"></div>
+<p style="color: black;">Redirecting to homepage...</p>
+
+
+<script>
+    setTimeout(() => {
+        window.location.replace("/");
+    }, 2000);
+</script>
+<%- include("partials/footer.ejs") %>
