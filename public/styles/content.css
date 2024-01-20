@@ -34,7 +34,14 @@ p {
   width: 200px;
   object-fit: cover;
   border-radius: 50%;
+  transition: 0.2s ease;
 }
+
+.profile:hover {
+  padding: 2px;
+  border: 5px solid #3586ff;
+}
+
 form {
   margin-top: 50px;
 }

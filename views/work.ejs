@@ -1,92 +1,23 @@
 <%- include("partials/header.ejs") %>
   <h1>My Work</h1>
     <div class="projects">
-        <a href="https://coder-mint.github.io/custom-ptfolio/" class="project text-decoration-none">
-            <img src="images/custom-ptfolio.png" alt="codermint" class="project-img">
-            <div class="project-desc">
-                <h2>Codermint's Oasis</h2>
-                <p>
-                    It is a sleek and modern website that showcases my skills and expertise. The website 
-                    features a brief description of my work as a developer and information about my skills in 
-                    Python and web development, 
-                    as well as my skills in app/game development and website development using HTML, CSS, 
-                    and JavaScript. Overall, this website is a great example of a portfolio website 
-                    that showcases my skills and expertise as a developer.
-                </p>
-            </div>
-        </a>
-        <a href="https://tinibird.netlify.app/" class="project text-decoration-none">
-            <div class="project-desc">
-                <h2>TiniBird</h2>
-                <p>
-                    One of my websites that has the best styling. It is a website for a phone app dedicated to birds that has a similar concept as the popular app Tinder. I actually haven't made the app yet though, this website is just sort of a website design.
-                </p>
-            </div>
-            <img src="images/tinibird.png" alt="codermint" class="project-img">
-        </a>
-        <a href="https://codermint-portfolio.netlify.app/" class="project text-decoration-none">
-            <img src="images/techy-ptfolio.png" alt="codermint" class="project-img">
-            <div class="project-desc">
-                <h2>Codermint's Workshop</h2>
-                <p>
-                    It is a sleek and modern website that also showcases my skills and expertise 
-                    as its creator. The website includes information about my skills 
-                    in Python, HTML, CSS, 
-                    Bootstrap, JavaScript, and Flask development. The 
-                    website is visually appealing and easy to navigate, making it a great resource for anyone 
-                    interested in learning more about my work.
-                </p>
-            </div>
-        </a>
-        <a href="https://coder-mint.github.io/dicee/" class="project text-decoration-none">
-            <div class="project-desc">
-                <h2>Di-C!</h2>
-                <p>
-                    Refresh to roll the dice again. If the dice of player 1 rolls on a greater number than the dice of player 2, player 1 wins. However, If the dice of player 2 rolls on a greater number than the dice of player 1, then player 2 wins. If they both roll on the same number, it is a draw. A simple, randomized game.
-                </p>
-            </div>
-            <img src="images/dicee.png" alt="codermint" class="project-img">
-        </a>
-        <a href="https://coder-mint.github.io/drum-kit/" class="project text-decoration-none">
-            <img src="images/drum-kit.png" alt="codermint" class="project-img">
-            <div class="project-desc">
-                <h2>Drum Kit</h2>
-                <p>
-                    Press the buttons or the respective keys on your keyboard to make drum sounds! Works like 
-                    a real drum kit, there are 4 drums, a snare, a crash cymbal and a bass. You could make 
-                    lots of sounds you would normally make with a real ordinary drum kit.
-                </p>
-            </div>
-        </a>
-        <a href="https://coder-mint.github.io/simon/" class="project text-decoration-none">
-            <div class="project-desc">
-                <h2>Simon</h2>
-                <p>
-                    Simon is a popular electronic game that 
-                    challenges players to memorize and reproduce a series of musical tones and lights on 
-                    a surface with four large, illuminated buttons: red, green, blue, and yellow. The pattern 
-                    won't be shown again, only 1 color at a time.
-                </p>
-            </div>
-            <img src="images/simon.png" alt="codermint" class="project-img">
-        </a>
-        <a href="https://image-generator-ew43.onrender.com/" class="project text-decoration-none">
-            <img src="images/img-gen.png" alt="codermint" class="project-img">
-            <div class="project-desc">
-                <h2>Image Generator</h2>
-                <p>
-                    Get a random image by pressing 'Random' or search for an image in the search bar and hit
-                    search, and get beautiful pictures back! These images 
-                    are taken from Unsplash.
-                </p>
-                <p class="add-info">
-                    P.S. There are a few flaws in the search functionality as the Unsplash API gives the wrong
-                    image for some searches, and the download button will redirect to the image, which you 
-                    have to download manually.
-                </p>
-            </div>
-        </a>
-    </div>
+        <% projects.forEach(project => { %>
+            <a target="_blank" href="<%= project.url %>" class="project text-decoration-none">
+                <% if ((projects.indexOf(project) + 1) % 2 != 0) { %>
+                    <img src="images/<%= project.img %>.png" alt="codermint" class="project-img">
+                <% } %>
+                
+                <div class="project-desc">
+                    <h2><%= project.name %></h2>
+                    <p><%= project.desc %></p>
+                    <p class="add-info"><%= project.add %></p>
+                </div>
+
+                <% if ((projects.indexOf(project) + 1) % 2 === 0) { %>
+                    <img src="images/<%= project.img %>.png" alt="<%= project.name %>" class="project-img">
+                <% } %>
+            </a>
+        <% }) %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <%- include("partials/footer.ejs") %>
