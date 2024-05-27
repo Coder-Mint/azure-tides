@@ -46,6 +46,10 @@ app.get("/contact", (req, res) => {
   res.render("contact.ejs", { active: 3 });
 });
 
+app.get("/privacy-policy", (req, res) => {
+  res.render("privacy-policy.ejs", { active: 3 });
+});
+
 app.post("/email", async (req, res) => {
   var [success, error] = await sendEmail(
     email, 
